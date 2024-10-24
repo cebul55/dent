@@ -2380,3 +2380,10 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+.icon {
+  max-width: 48px;
+  max-height: 48px;
+  min-width: 24px;
+  min-height: 24px;
+}

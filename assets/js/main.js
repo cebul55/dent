@@ -9,14 +9,6 @@
 (function() {
   "use strict";
 
-  document.addEventListener('DOMContentLoaded', function () {
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
-      });
-  });
-
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
