@@ -2387,3 +2387,8 @@ section,
   min-width: 24px;
   min-height: 24px;
 }
+
+img.bi {
+  max-width: 2.5em;
+  max-height: 2.5em;
+}
