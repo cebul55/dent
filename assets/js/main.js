@@ -251,13 +251,13 @@ function submitMail(event) {
     }
     // these IDs from the previous steps
     // printHelloWithRandomFailure()
-    // emajsil.sendForm('default_service', 'template_212ue69', this)
+    // emailjs.sendForm('default_service', 'template_212ue69', this)
     //     .then(() => {
     //         console.log('SUCCESS!');
     //     }, (error) => {
     //         console.log('FAILED...', error);
     //     });
-    emajsil.sendForm('default_service', 'template_212ue69', this)
+    emailjs.sendForm('default_service', 'template_212ue69', this)
     .then(
       (message) => {
         showPopup('Wiadomość została wysłana, niedługo się z Tobą skontaktujemy.');
