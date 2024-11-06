@@ -245,6 +245,7 @@ function submitMail(event) {
     showPopup("Udowodnij, że jesteś człowiekiem");
     return; // Prevent form submission if reCAPTCHA is incomplete
   }
+    let form = event.target;
     var buttons = document.querySelectorAll('input[type="submit"]');
     for(var i = 0; i < buttons.length; i++) {
       buttons[i].setAttribute('disabled',true)
@@ -257,11 +258,11 @@ function submitMail(event) {
     //     }, (error) => {
     //         console.log('FAILED...', error);
     //     });
-    emailjs.sendForm('default_service', 'template_212ue69', this)
+    emailjs.sendForm('default_service', 'template_212ue69', form)
     .then(
       (message) => {
         showPopup('Wiadomość została wysłana, niedługo się z Tobą skontaktujemy.');
-        this.reset();
+        form.reset();
         grecaptcha.reset(); 
       },
       (error) => {
