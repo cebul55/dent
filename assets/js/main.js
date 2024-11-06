@@ -218,4 +218,127 @@
 
   });
 
+  emailjs.init({
+    publicKey: "bE1GsxcTrQshuRZA7",
+  });
+
+  window.onload = function() {
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      submitMail(event);
+    } );
+    document.getElementById('contact-form-big').addEventListener('submit', function(event) {
+      submitMail(event);
+    } );
+}
+
+function submitMail(event) {
+  event.preventDefault();
+  if(!validateForm(event)) {
+    return;
+  }
+  // Check if reCAPTCHA is completed
+  if (grecaptcha.getResponse() === "") {
+    showPopup("Udowodnij, że jesteś człowiekiem");
+    return; // Prevent form submission if reCAPTCHA is incomplete
+  }
+    var buttons = document.querySelectorAll('input[type="submit"]');
+    for(var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('disabled',true)
+    }
+    // these IDs from the previous steps
+    // printHelloWithRandomFailure()
+    // emajsil.sendForm('default_service', 'template_212ue69', this)
+    //     .then(() => {
+    //         console.log('SUCCESS!');
+    //     }, (error) => {
+    //         console.log('FAILED...', error);
+    //     });
+    emajsil.sendForm('default_service', 'template_212ue69', this)
+    .then(
+      (message) => {
+        showPopup('Wiadomość została wysłana, niedługo się z Tobą skontaktujemy.');
+        this.reset();
+        grecaptcha.reset(); 
+      },
+      (error) => {
+        showPopup('Nie udało się wysłać wiadomości. Spróbuj ponownie za momencik.')
+      }
+    ).finally(() => {
+      for(var i = 0; i < buttons.length; i++) {
+        buttons[i].removeAttribute('disabled')
+      }
+    });
+}
+
+function validateForm(event) {
+  let name, email, message;
+  try {
+    const form = event.target;
+    name = form.querySelector('[name="from_name"]').value.trim();
+    email = form.querySelector('[name="reply_to"]').value.trim();
+    message = form.querySelector('[name="message"]').value.trim();
+
+  } catch (e) {
+    name = document.getElementById('from_name').value.trim();
+    email = document.getElementById('reply_to').value.trim();
+    message = document.getElementById('message').value.trim();
+  }
+
+  // Regular expression for basic email format validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Check if all fields are filled and if email matches the pattern
+  if (!name || !email || !message) {
+    showPopup("Proszę wypełnić wszystkie pola.");
+    return false;
+  } else if (!emailPattern.test(email)) {
+    showPopup("Proszę wprowadzić poprawny adres email.");
+    return false;
+  }
+
+  // If all checks pass, allow the form to be submitted
+  return true;
+}
+
+function showPopup(message) {
+  // Create the popup container
+  const popup = document.createElement('div');
+  popup.classList.add('popup-container');
+  
+  // Add the message text
+  popup.innerHTML = `
+    <span>${message}</span>
+    <button class="popup-close-btn" onclick="(function(el){ el.parentNode.removeChild(el); })(this.parentNode)">×</button>
+  `;
+
+  // Append the popup to the body
+  document.body.appendChild(popup);
+
+  // Set a timeout to automatically close the popup after 5 seconds
+  setTimeout(() => {
+    closePopup(popup);
+  }, 5000);
+}
+
+// Function to close the popup
+function closePopup(popupElement) {
+  try {
+    popupElement.parentNode.removeChild(popupElement);
+  } catch (ignore) {};
+}
+
+function printHelloWithRandomFailure() {
+  return new Promise((resolve, reject) => {
+    // Generate a random number between 0 and 1
+    const random = Math.random();
+
+    if (random > 0.5) { // Success case (50% chance)
+      console.log("Hello");
+      resolve("Success: Printed Hello");
+    } else { // Failure case (50% chance)
+      reject("Error: Failed to print Hello");
+    }
+  });
+}
+
 })();
