@@ -223,12 +223,16 @@
   });
 
   window.onload = function() {
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      submitMail(event);
-    } );
-    document.getElementById('contact-form-big').addEventListener('submit', function(event) {
-      submitMail(event);
-    } );
+    try {
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        submitMail(event);
+      } );
+    } catch (ignore) {}
+    try {
+      document.getElementById('contact-form-big').addEventListener('submit', function(event) {
+        submitMail(event);
+      } );
+    } catch (ignore) {}
 }
 
 function submitMail(event) {
