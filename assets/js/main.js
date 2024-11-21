@@ -240,11 +240,7 @@ function submitMail(event) {
   if(!validateForm(event)) {
     return;
   }
-  // Check if reCAPTCHA is completed
-  if (grecaptcha.getResponse() === "") {
-    showPopup("Udowodnij, że jesteś człowiekiem");
-    return; // Prevent form submission if reCAPTCHA is incomplete
-  }
+
     let form = event.target;
     var buttons = document.querySelectorAll('input[type="submit"]');
     for(var i = 0; i < buttons.length; i++) {
@@ -263,7 +259,6 @@ function submitMail(event) {
       (message) => {
         showPopup('Wiadomość została wysłana, niedługo się z Tobą skontaktujemy.');
         form.reset();
-        grecaptcha.reset(); 
       },
       (error) => {
         showPopup('Nie udało się wysłać wiadomości. Spróbuj ponownie za momencik.')
