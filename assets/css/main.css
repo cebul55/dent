@@ -2442,3 +2442,76 @@ section,
   margin-left: auto;
   margin-right: auto;
 }
+/* Vacation Banner Styles */
+.vacation-banner {
+  padding: 15px 0;
+  background-color: #fff3cd;
+}
+
+.vacation-alert {
+  margin-bottom: 0;
+  border-radius: 8px;
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vacation-alert strong {
+  color: #856404;
+}
+
+.vacation-alert .alert-link {
+  color: #34bf49;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.vacation-alert .alert-link:hover {
+  color: #2a9a3a;
+  text-decoration: underline;
+}
+
+.vacation-alert .bi-exclamation-triangle-fill {
+  color: #ffc107;
+}
+
+/* Vacation Banner Styles */
+.vacation-banner {
+  position: sticky;
+  top: 80px;
+  padding: 15px 0;
+  background-color: #fff3cd;
+  z-index: 2;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.vacation-alert {
+  margin-bottom: 0;
+  border-radius: 8px;
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vacation-alert strong {
+  color: #856404;
+}
+
+.vacation-alert .alert-link {
+  color: #34bf49;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.vacation-alert .alert-link:hover {
+  color: #2a9a3a;
+  text-decoration: underline;
+}
+
+.vacation-alert .bi-exclamation-triangle-fill {
+  color: #ffc107;
+}
