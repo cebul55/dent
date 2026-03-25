@@ -2446,6 +2446,7 @@ section,
 .vacation-banner {
   padding: 15px 0;
   background-color: #fff3cd;
+  display: none;
 }
 
 .vacation-alert {
